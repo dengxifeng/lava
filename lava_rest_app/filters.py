@@ -37,7 +37,7 @@ class GroupFilter(filters.FilterSet):
 
 
 class UserFilter(filters.FilterSet):
-    group = RelatedFilter(GroupFilter, name="groups", queryset=Group.objects.all())
+    groups = RelatedFilter(GroupFilter, name="groups", queryset=Group.objects.all())
 
     class Meta:
         model = User
@@ -203,7 +203,7 @@ class DeviceTypeFilter(filters.FilterSet):
     processor = RelatedFilter(
         ProcessorFamilyFilter, name="processor", queryset=ProcessorFamily.objects.all()
     )
-    alias = RelatedFilter(AliasFilter, name="aliases", queryset=Alias.objects.all())
+    aliases = RelatedFilter(AliasFilter, name="aliases", queryset=Alias.objects.all())
     bits = RelatedFilter(BitWidthFilter, name="bits", queryset=BitWidth.objects.all())
     cores = RelatedFilter(CoreFilter, name="cores", queryset=Core.objects.all())
     health_denominator = CharFilter(method="filter_health_denominator")
@@ -511,7 +511,7 @@ class TestCaseFilter(filters.FilterSet):
 
 
 class GroupDeviceTypePermissionFilter(filters.FilterSet):
-    device_type = RelatedFilter(
+    devicetype = RelatedFilter(
         DeviceTypeFilter, name="devicetype", queryset=DeviceType.objects.all()
     )
     group = RelatedFilter(GroupFilter, name="group", queryset=Group.objects.all())
